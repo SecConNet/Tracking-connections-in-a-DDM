@@ -25,14 +25,14 @@ The file "" is for detecting the highload on the system and sending a notificati
 ```
       time_to_complete = stdmeta.ingress_global_timestamp - t_syn;
       if (time_to_complete > max_time_to_complete )
-	{
+      {
  	     long_connections.read(connections, (bit<32>)hdr.tcp.dstPort);
 	     connections = connections + 1;
 	     long_connections.write((bit<32>) hdr.tcp.dstPort, connections);
-	 }
+      }
       if (connections > max_long_connection )
-	 {
+      {
 	     stdmeta.egress_spec = CPU_PORT;
              hdr.packet_in.setValid();
-	 }
+      }
 ```
